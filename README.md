@@ -1,1 +1,1 @@
-#This is a normal readme file
+#This is a simple practice of CRUD operations using express and postman
