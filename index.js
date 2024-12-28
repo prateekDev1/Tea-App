@@ -28,6 +28,7 @@ let teaId = 1;
 
 // add a new tea
 app.post('/teas', (req,res) => {
+    logger.info("A post request is made to add a new tea !!");
     const {name,price} = req.body;
     const newTea = {
         id : teaId++,
@@ -41,11 +42,13 @@ app.post('/teas', (req,res) => {
 
 // listing all the teas
 app.get('/teas', (req,res) => {
+    logger.warn("A get request is made to list all the teas !!");
     res.status(200).send(teaData);
 });
 
 // list the tea with specified id
 app.get('/teas/:id', (req,res) => {
+    logger.error("A get request is made to list the tea with specified id !!");
     const tea = teaData.find((tea) => tea.id === parseInt(req.params.id));
     if(!tea) {
         return res.status(404).send('Tea not found');
@@ -55,6 +58,7 @@ app.get('/teas/:id', (req,res) => {
 
 // update the tea
 app.put('/teas/:id', (req,res) => {
+    logger.info("A put request is made to update the tea !!");
     const tea = teaData.find((tea) => tea.id === parseInt(req.params.id));
     // tea with that specific id isn't found
     if(!tea) {
